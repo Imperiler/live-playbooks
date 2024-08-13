@@ -1,0 +1,74 @@
+---
+- name: Disable Bluetooth
+  debug:
+    msg: "disable bluetooth here"
+
+
+- name: Disable Wifi
+  debug:
+    msg: "disable wifi here"
+
+
+- name: Disable Sleep
+  debug:
+    msg: "disable sleep/display turn off here"
+
+
+- name: Disable Screen Saver
+  debug:
+    msg: "disable screen saver here"
+
+
+- name: Close Web browsers
+  debug:
+    msg: "ensure no web browsers are open here"
+
+
+- name: Close Office Apps
+  debug:
+    msg: "ensure no office apps are open here"
+
+
+- name: Close Cloud Apps
+  debug:
+    msg: "ensure no cloud apps are open here"
+
+
+- name: Turn off Time-Machine
+  debug:
+    msg: "make sure time machine disabled here"
+
+
+- name: Turn off auto system updates
+  debug:
+    msg: "make sure auto system updates are disabled here"
+
+
+- name: Disable spotlight indexing
+  debug:
+    msg: "disable spotlight indexing here"
+
+
+- name: Disable filevault
+  debug:
+    msg: "make sure filevault disabled here"
+
+
+- name: Enable DND mode
+  debug:
+    msg: "enable do not disturb here"
+
+
+- name: Disable Siri
+  debug:
+    msg: "disable siri here"
+
+
+- name: Disable system sounds
+  debug:
+    msg: "disable system sounds here"
+
+
+- name: Ensure DVS started
+  debug:
+    msg: "ensure dante virtual soundccard running here"

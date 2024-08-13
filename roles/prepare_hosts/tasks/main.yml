@@ -1,0 +1,20 @@
+- hosts: dsp
+  name: Include mute mains
+  include: mute_mains.yml
+
+- name: Include OS-specific system setup tasks
+  include_tasks: >
+    {{ item }}
+  with_first_found:
+    - files:
+        - "prepare_{{ ansible_os_family | lower }}.yml"
+      skip: true
+
+- hosts: ableton
+  tasks:
+    - name: Include Ableton setup tasks
+      include_tasks: prepare_ableton.yml
+
+- hosts: dsp
+  name: Include unmute mains
+  include: unmute_mains.yml

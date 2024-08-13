@@ -1,0 +1,13 @@
+---
+- name: close other DAWs
+  debug:
+    msg: "close any other non-ableton daws here"
+
+- name: ensure Ableton running
+  debug:
+    msg: "ensure Ableton running here- passing correct set to open as param"
+
+- name: validate correct set
+  debug:
+    msg: "we should ensure the correct set is open for all Ableton hosts"
+
