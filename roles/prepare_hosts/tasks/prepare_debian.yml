@@ -1,0 +1,10 @@
+---
+
+- name: Check if Firefox is running
+  command: pgrep firefox
+  register: firefox_process
+  ignore_errors: true
+
+- name: Close Firefox if it is running
+  command: pkill firefox
+  when: firefox_process.rc == 0

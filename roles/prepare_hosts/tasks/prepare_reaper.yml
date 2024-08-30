@@ -1,0 +1,20 @@
+---
+- name: Check if Reaper is running
+  # without -x, we will end up matching oom_reaper system process
+  command: pgrep -x reaper
+  register: reaper_process
+  ignore_errors: true
+
+- name: Ensure at is installed
+  apt:
+    name: at
+    state: present
+  become: yes
+  when: reaper_process.rc != 0
+
+
+# note: user specified must have access_control permissions. This can be achieved by creating a file run via startup apps with 'xhost +SI:localuser:impadmin' as the content
+- name: Start Reaper if not running
+  shell: echo 'su - impadmin -c "DISPLAY=:0 /usr/local/bin/reaper"' | at now
+  when: reaper_process.rc != 0
+  become: yes

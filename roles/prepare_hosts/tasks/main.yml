@@ -1,20 +1,26 @@
-- hosts: dsp
-  name: Include mute mains
-  include: mute_mains.yml
+#- hosts: dsp
+#  tasks:
+#    - name: Include mute mains
+#      include_tasks: mute_mains.yml
 
 - name: Include OS-specific system setup tasks
-  include_tasks: >
-    {{ item }}
+  include_tasks: "{{ item }}"
   with_first_found:
     - files:
         - "prepare_{{ ansible_os_family | lower }}.yml"
       skip: true
 
-- hosts: ableton
-  tasks:
-    - name: Include Ableton setup tasks
-      include_tasks: prepare_ableton.yml
+- name: Include Reaper host tasks
+  include_tasks: prepare_reaper.yml
+  when: "'reaper' in group_names"
 
-- hosts: dsp
-  name: Include unmute mains
-  include: unmute_mains.yml
+
+#- hosts: ableton
+#  tasks:
+#    - name: Include Ableton setup tasks
+#      include_tasks: prepare_ableton.yml
+
+#- hosts: dsp
+#  tasks:
+#    - name: Include unmute mains
+#      include_tasks: unmute_mains.yml
